@@ -36,7 +36,7 @@ class AuthController extends Controller{
 		$new_user->password = bcrypt($request->get('password'));
 		if($new_user->save()){
 			session()->flash('notification-status','success');
-			session()->flash('notification-msg',"Your account is still pending. Wait for admin's approval.");
+			session()->flash('notification-msg',"Your account is registered.");
 			return redirect()->route('system.login');
 		}else{
 			session()->flash('notification-status','success');

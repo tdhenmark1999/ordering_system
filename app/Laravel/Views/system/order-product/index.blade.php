@@ -26,7 +26,7 @@
 
             @endif
             <label class="order_check" for="myCheckbox{{$item->id}}">
-            <h3 style="margin-top:10px !important;margin-bottom:10px !important;text-transform:uppercase">{{$item->name}}
+            <h3 style="margin-top:10px !important;margin-bottom:10px !important;text-transform:uppercase">{{$item->name}} -  {{$item->category}} <br>
             @if($item->status == 'not available')
             <span class="bg-danger text-white p-3" style="font-size:12px;padding:5px 10px;border-radius:5px">{{$item->status}}</span>
             @else

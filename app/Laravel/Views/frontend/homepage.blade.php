@@ -2,6 +2,6 @@
 
 @section('content')
 <script type="text/javascript">
-    window.location.href="/admin"
+    window.location.href="/admin/login"
 </script>
 @stop
