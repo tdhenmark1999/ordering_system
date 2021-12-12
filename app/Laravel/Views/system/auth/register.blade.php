@@ -7,7 +7,7 @@
       <div class="splash-container">
         @include('system._components.notifications')
         <div class="panel panel-default panel-border-color panel-border-color-primary">
-          <div class="panel-heading"><img src="{{asset('logo.png')}}" alt="logo" width="102" height="102" class="logo-img">
+          <div class="panel-heading"><img src="{{asset('uploads/images/Capture.PNG')}}" alt="logo" width="auto" height="90" class="logo-img">
           <span class="splash-description">This is intended for all <strong>users</strong>
            that doesn't have an account yet. <strong class="text-danger">
              </strong></span></div>

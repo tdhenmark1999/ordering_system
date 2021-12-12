@@ -26,4 +26,6 @@ class Product extends Model
     public function category() {
         return $this->BelongsTo("App\Laravel\Models\Category", "category", "id");
     }
+
+   
 }

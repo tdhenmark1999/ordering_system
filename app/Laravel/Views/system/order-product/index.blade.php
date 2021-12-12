@@ -15,16 +15,19 @@
             </ul>
           </div> -->
         </div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {!!csrf_field()!!}
         <div class="panel-body container" style="padding:20px">
           <div class="row" style="">
           @forelse($products as $item)
           <div class="col-md-4">
             @if($item->status == 'not available')
-            <input disabled="" type="checkbox" id="myCheckbox{{$item->id}}" />
+            <input disabled="" value="{{$item->id}}" type="checkbox" id="myCheckbox{{$item->id}}" />
             @else
-            <input type="checkbox" id="myCheckbox{{$item->id}}" />
-
+            <input type="checkbox" name="product_id[]" value="{{$item->id}}" id="myCheckbox{{$item->id}}" />
             @endif
+            <!-- <input name="total_price[]" value="{{$item->price}}"  /> -->
+
             <label class="order_check" for="myCheckbox{{$item->id}}">
             <h3 style="margin-top:10px !important;margin-bottom:10px !important;text-transform:uppercase">{{$item->name}} -  {{$item->category}} <br>
             @if($item->status == 'not available')
@@ -39,19 +42,20 @@
                 <span>{{$item->description}}</span>
               </div>
             </label>
-          
+            <input type="hidden" name="total_price[]" value="{{$item->price}}"  />
+        
           </div>
          
-        
           @empty
           <div class="col-md-12">
           <p>No Food Available</p>
             <div>
               @endforelse
               <div class="col-md-12 text-center" style="margin-bottom:20px">
-                <button class="btn bg-green text-white ">Checkout</button>
+                <button type="submit" class="btn bg-green text-white ">Checkout</button>
             <div>
         </div>
+</form>
           <!-- <table class="table table-hover table-wrapper">
             <thead>
               <tr>

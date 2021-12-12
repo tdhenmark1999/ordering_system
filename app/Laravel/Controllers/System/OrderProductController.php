@@ -6,6 +6,7 @@ namespace App\Laravel\Controllers\System;
 *
 * Models used for this controller
 */
+use App\Laravel\Models\Ordered;
 use App\Laravel\Models\Product;
 use App\Laravel\Models\Category;
 use Illuminate\Http\Request as PageRequest;
@@ -19,7 +20,7 @@ use App\Laravel\Requests\System\ProductRequest;
 *
 * Classes used for this controller
 */
-use Helper, Carbon, Session, Str,ImageUploader,DB;
+use Helper, Carbon, Str,ImageUploader,DB,Session;
 
 class OrderProductController extends Controller{
 
@@ -52,37 +53,19 @@ class OrderProductController extends Controller{
 		return view('system.product.create',$this->data);
 	}
 
-	public function store(ProductRequest $request){
+	public function store(PageRequest $request){
 
-		// return $request->all();
-		// return $request->all();
-		DB::beginTransaction();
+	
+		$ordered_item = new Ordered;
+		$user = $request->user();
+		$ordered_item->product_id = implode(',', $request->input('product_id'));
+		$ordered_item->total_price = implode(',', $request->input('total_price'));
+		$ordered_item->status = 'pending';
+		$ordered_item->user_id = $request->user()->id;
+		Session::put('ordered_item', $ordered_item);
+		$ordered_item->save();
 
-		try {
-			
-		if($request->hasFile('file')){
-			$file = $request->file('file');
-			$filename = time().$file->getClientOriginalName();
-			$path = public_path().'/uploads/images/';
-			$this->product_model->file_name = $filename;
-			$this->product_model->directory = $path;
-			$this->product_model->full_path = $path."/".$filename;
-			$this->product_model->fill($request->except(['file']));
-			if($this->product_model->save()){
-
-				$file->move($path, $filename);
-				// save training_session
-
-				DB::commit();
-				return redirect()->route('system.product.index');
-			}
-		}
-			
-
-		} catch (\Throwable $th) {
-			throw $th;
-			DB::rollback();
-		}
+		return dd($ordered_item);
 
 	}
 

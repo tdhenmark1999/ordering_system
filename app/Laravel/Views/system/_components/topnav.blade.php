@@ -1,6 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
   <div class="container-fluid">
-    <div class="navbar-header"><a href="{{route('system.areas.index')}}" class="navbar-brand" style="background-image:url(https://www.monarchballroomdance.com/wp-content/uploads/2017/02/logo-placeholder.png)" ></a>
+    <div class="navbar-header">
+    <img src="{{asset('uploads/images/Capture.PNG')}}"style="max-width: 76px;" >
     </div>
     <div class="be-right-navbar">
       <ul class="nav navbar-nav navbar-right be-user-nav">

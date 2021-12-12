@@ -8,7 +8,7 @@
         @include('system._components.notifications')
         <div class="panel panel-default panel-border-color panel-border-color-primary">
           <div class="panel-heading">
-            <img src="{{asset('placeholder/user.jpg')}}" alt="logo" width="auto" height="90px"  class="logo-img">
+            <img src="{{asset('uploads/images/Capture.PNG')}}" alt="logo" width="auto" height="90px"  class="logo-img">
             {{-- <span class="splash-description">Login to Administrator Portal</span> --}}
           </div>
           <div class="panel-body">

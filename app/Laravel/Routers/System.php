@@ -67,7 +67,7 @@ $this->group([
 			$this->group(['prefix' => "order-product", 'as' => "order_product."], function () {
 				$this->get('/',['as' => "index", 'uses' => "OrderProductController@index"]);
 				// $this->get('create',['as' => "create", 'uses' => "ProductController@create"]);
-				// $this->post('create',['uses' => "ProductController@store"]);
+				$this->post('/',['uses' => "OrderProductController@store"]);
 				// $this->get('edit/{id?}',['as' => "edit", 'uses' => "ProductController@edit"]);
 				// $this->post('edit/{id?}',['uses' => "ProductController@update"]);
 				// $this->any('delete/{id?}',['as' => "destroy", 'uses' => "ProductController@destroy"]);
